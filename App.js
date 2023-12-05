@@ -14,6 +14,11 @@ import Icon from 'react-native-vector-icons/MaterialIcons';
 import {CyanBlue, DarkBlue, DarkGrey, JeansBlue, LighterBlue} from "./assets/colors/Colors";
 
 
+const tabBar_style = {
+    backgroundColor: DarkBlue,
+}
+
+
 const tabBarOptions_style ={
     activeTintColor: CyanBlue, // Color of the active tab
     inactiveTintColor: 'whitesmoke', // Color of inactive tabs
@@ -23,15 +28,13 @@ const tabBarOptions_style ={
     },
     style: {
         backgroundColor: 'red', // Background color of the tab bar
-    },
-}
-
-const tabBar_style = {
-    backgroundColor: DarkBlue,
+    }
 }
 
 
-const CustomIconComponent = ({ color, size, name }) => {
+
+
+export const CustomIconComponent = ({ color, size, name }) => {
     return (
         <View>
             <Icon name={name} size={size} color={color} />
@@ -107,6 +110,14 @@ const App = () => {
                   tabBarStyle: tabBar_style,
                   tabBarIcon: ({ color, size }) => (
                       <CustomIconComponent color={color} size={size} name={'map'} />
+                  ),
+              }}/>}
+
+              {isAuthed &&<Tab.Screen name="Profile" component={ProfileSettings} options={{
+                  tabBarLabel: 'Profile',
+                  tabBarStyle: tabBar_style,
+                  tabBarIcon: ({ color, size }) => (
+                      <CustomIconComponent color={color} size={size} name={'person'} />
                   ),
               }}/>}
           </Tab.Navigator>
