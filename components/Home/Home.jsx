@@ -3,6 +3,7 @@ import { StyleSheet, Text, View,SafeAreaView,ImageBackground, ScrollView, Toucha
 import Icon from 'react-native-vector-icons/FontAwesome'
 import Material from 'react-native-vector-icons/MaterialCommunityIcons'
 import Hotel from 'react-native-vector-icons/FontAwesome5'
+import {LightBlue, NormalBlue} from "../../assets/colors/Colors";
 
 
 const Home = ({navigation,route}) => {
@@ -15,19 +16,18 @@ const Home = ({navigation,route}) => {
   }
   return (
    <SafeAreaView style={{backgroundColor:'#080c14',flex:1}}>
-    <ScrollView   refreshControl={
+    <ScrollView refreshControl={
     <RefreshControl refreshing={refreshing} onRefresh={onRefresh} />
   } >
    
-        <Text style={{color:'#0c8289',padding:20,fontSize:30,marginTop:30}}><Icon name="hotel"  size={30}/>   WordTrip</Text>
+        <Text style={{color:NormalBlue,padding:20,fontSize:30,marginTop:30}}><Icon name="hotel"  size={30}/>   WorldTrip</Text>
         <View style={styles.container} >
-              <TouchableOpacity style={styles.child}  onPress={() => {
-    navigation.navigate("Flight");
-  }}>
+
+              <TouchableOpacity style={styles.child}  onPress={() => {navigation.navigate("Flights");}}>
                         <Icon style={styles.icons} name='plane' size={20}/>
                         <Text style={{color:'white'}}>Flights</Text>
               </TouchableOpacity>
-              <TouchableOpacity style={styles.child} onPress={()=>{navigation.navigate("Hotel")}}>
+              <TouchableOpacity style={styles.child} onPress={()=>{navigation.navigate("Hotels")}}>
                       <Hotel style={styles.icons} name='hotel' size={20}/>
                        <Text style={{color:'white'}}>Hotel</Text>
               </TouchableOpacity>
@@ -37,36 +37,22 @@ const Home = ({navigation,route}) => {
               </TouchableOpacity>
           </View>
           <View style={styles.body}>
+              <View style={styles.boxes}>
+                  <ImageBackground source={{uri:'https://t3.ftcdn.net/jpg/05/67/71/40/360_F_567714042_UvQVT3tVEsQFcbqvgsoJ8Mju0jp6TdxK.jpg'}}
+                                   style={styles.bodyBackground}>
+                      <Text  style={styles.bodyText}>Book the best plane for your travel, considering both the aircraft itself and its departure time.</Text>
+                  </ImageBackground>
+              </View>
           <View style={styles.boxes}>
               <ImageBackground source={{uri:'https://offloadmedia.feverup.com/parissecret.com/wp-content/uploads/2022/01/19044022/COUV-ARTICLES-1920x1080-44.jpg'}}
-                style={styles.bodyBackground}
-              >
+                style={styles.bodyBackground}>
                 <Text style={styles.bodyText}>Search for hotels that you find appealing and consider feasible, taking into account their prices.</Text>
               </ImageBackground>
           </View>
-        <View style={styles.boxes}>
-            <ImageBackground source={{uri:'https://t3.ftcdn.net/jpg/05/67/71/40/360_F_567714042_UvQVT3tVEsQFcbqvgsoJ8Mju0jp6TdxK.jpg'}}
-                style={styles.bodyBackground}>
-             <Text  style={styles.bodyText}>Book the best plane for your travel, considering both the aircraft itself and its departure time.</Text>
-            </ImageBackground>
-        </View>
     </View>
 
      </ScrollView>
-     <View style={styles.footer}>
-        <TouchableOpacity style={styles.items} >
-              <Icon style={{color:'white'}} name="home" size={30} />
-              <Text style={{color:'white'}}>Explore</Text>
-        </TouchableOpacity>
-        <TouchableOpacity style={styles.items}  onPress={()=>{navigation.navigate("Trips")}}>
-                <Material  name="airport" size={30} />
-                <Text>Trips</Text>
-        </TouchableOpacity>
-        <TouchableOpacity style={styles.items} onPress={()=>{navigation.navigate("ProfileSettings")}}>
-                <Icon name="user" size={30} />
-                <Text>Profile</Text>
-        </TouchableOpacity>
-      </View>
+
    </SafeAreaView>
   )
 }
@@ -88,7 +74,7 @@ const styles = StyleSheet.create({
      color:'white'
   },
   icons:{
-    backgroundColor:'#0c8289',
+    backgroundColor:LightBlue,
     borderRadius: 30,
     padding: 20,
     paddingHorizontal:25,
@@ -96,6 +82,10 @@ const styles = StyleSheet.create({
   
   },
   boxes:{
+      display: 'flex',
+      flexDirection: 'column',
+      justifyContent: 'center',
+      alignItems: 'center',
     marginTop:20,
     paddingLeft:20,
     paddingRight:20,

@@ -40,20 +40,6 @@ const ProfileSettings = ({navigation}) => {
         <Button  onPress={()=>{navigation.navigate('Login')}} title={'Log Out'}/>
       </View>
 
-     <View style={styles.footer}>
-        <TouchableOpacity style={styles.items} onPress={()=>{navigation.navigate("Home")}}>
-              <Icon name="home" size={30} />
-              <Text >Explore</Text>
-        </TouchableOpacity>
-        <TouchableOpacity style={styles.items}  onPress={()=>{navigation.navigate("Trips")}}>
-                <Material  name="airport" size={30} />
-                <Text>Trips</Text>
-        </TouchableOpacity>
-        <TouchableOpacity style={styles.items}>
-                <Icon style={{color:'white'}} name="user" size={30} />
-                <Text style={{color:'white'}} >Profile</Text>
-        </TouchableOpacity>
-      </View>
    </SafeAreaView>
   )
 }

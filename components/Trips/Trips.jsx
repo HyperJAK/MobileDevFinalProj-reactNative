@@ -30,20 +30,7 @@ const Trips = ({navigation}) => {
       
     
     </View>
-    <View style={styles.footer}>
-        <TouchableOpacity style={styles.items} onPress={()=>{navigation.navigate("Home")}}>
-              <Icon name="home" size={30} />
-              <Text>Explore</Text>
-        </TouchableOpacity>
-        <TouchableOpacity style={styles.items}  >
-                <Material style={{color:'white'}} name="airport" size={30} />
-                <Text style={{color:'white'}}>Trips</Text>
-        </TouchableOpacity>
-        <TouchableOpacity style={styles.items} onPress={()=>{navigation.navigate("ProfileSettings")}}>
-                <Icon name="user" size={30} />
-                <Text>Profile</Text>
-        </TouchableOpacity>
-      </View>
+
     </SafeAreaView>
   )
 }
