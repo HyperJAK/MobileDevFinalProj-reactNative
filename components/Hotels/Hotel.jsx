@@ -2,6 +2,7 @@ import React ,{useState} from 'react'
 import { StyleSheet, TextInput,Text, View,SafeAreaView,ImageBackground, ScrollView, TouchableOpacity } from 'react-native';
 import Material from 'react-native-vector-icons/MaterialCommunityIcons'
 import Awesome from 'react-native-vector-icons/FontAwesome'
+import {DatePicker} from "../Flights/DatePicker";
 
 
 const Hotel=({navigation})=>{
@@ -11,14 +12,16 @@ const Hotel=({navigation})=>{
         
             <Awesome name='arrow-left' size={40} style={{color:'white',marginTop:40,marginLeft:20}} onPress={()=>{navigation.navigate("Home")}}/>
             <Text style={{color:'white',textAlign:'center',fontSize:20,marginTop:10}}>Choose the infos for your Hotel:</Text>
-            <TextInput style={styles.path}  placeholder="Stay In..." placeholderTextColor="white" />
-            <TextInput style={styles.path} placeholder="Leave In..." placeholderTextColor="white" />
+            <TextInput style={styles.path}  placeholder="Stay In..." placeholderTextColor="black" />
+            <TextInput style={styles.path} placeholder="Leave In..." placeholderTextColor="black" />
             <View style={styles.date}>
-                <TextInput style={styles.dateItems} placeholder='Date From...' placeholderTextColor="white" />
-                <TextInput style={styles.dateItems}  placeholder='Date To...' placeholderTextColor="white" />
+                <DatePicker title={'Book for'}/>
+                <DatePicker title={'Until'}/>
             </View>
-            <TouchableOpacity style={{backgroundColor:'grey',marginHorizontal:10, borderRadius:10}} activeOpacity={0.6}>
-                <Text style={{textAlign:'center',color:'white',marginVertical:10,padding:10}}>Search</Text>
+            <TouchableOpacity
+                style={{backgroundColor: 'white', marginHorizontal: 10, borderRadius: 10, marginVertical: 20}}
+                activeOpacity={0.6}>
+                <Text style={{textAlign: 'center', color: 'black', marginVertical: 10, padding: 10}}>Search</Text>
             </TouchableOpacity>
             <View style={styles.separator} />
             <Text style={{color:'white',textAlign:'center',fontSize:20}}>List of Available Hotel:</Text>
@@ -33,16 +36,18 @@ path:{
     marginVertical:15,
     padding:10,
     borderRadius:10,
-    backgroundColor:'grey',
+    backgroundColor:'white',
     textAlign:'center',
     fontSize:20 ,
-    color:'white',
+    color:'black',
     
 },
 date:{
     
     flexDirection:'row',
     marginHorizontal:15,
+    justifyContent: 'center',
+    gap: 50
     
 },
 dateItems:{

@@ -48,7 +48,7 @@ export const CustomIconComponent = ({ color, size, name }) => {
 
 const App = () => {
 
-    const [isAuthed, setIsAuthed] = useState(false);
+    const [isAuthed, setIsAuthed] = useState(true);
 
 
 
