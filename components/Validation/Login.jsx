@@ -1,47 +1,9 @@
 import React, { useState ,useEffect} from 'react';
 import { View, Text, TextInput, TouchableOpacity, ImageBackground, StyleSheet, SafeAreaView, Alert } from 'react-native';
 
-const Login = ({navigation,setIsAuthed}) => {
+const Login = ({props}) => {
 
-
-  const [userData, setUserData] = useState([{username:'Antoine',Password:'12345'},
-                                            {username:'Ralph',Password:'1234'},
-                                            {username:'James',Password:'123'}
-                                          ]);
-
-  /*useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await fetch('data.json');
-        if (!response.ok) {
-          throw new Error(`HTTP error! Status: ${response.status}`);
-        }
-        const data = await response.json();
-        setUserData(data.users);
-      } catch (error) {
-        console.error('Error fetching or parsing JSON file:', error);
-      }
-    };
-  
-    fetchData();
-  }, []);*/
-  const [Username, setUsername] = useState('');
-  const [Password, setPassword] = useState('');
-  
-  const checkLogin = () => {
-    for (let i = 0; i < userData.length; i++) {
-      if (Username === userData[i].username && Password === userData[i].Password) {
-        console.log("Entered")
-        setIsAuthed(true);
-          navigation.navigate("Home",{username:userData[i].username,Password:userData[i].Password});
-        return ;
-      }
-    }
-    
-           Alert.alert('error');
-    
-    
-  };
+  const {handleLoggin,setIsAuthed,email,setEmail,password,setPassword} = props;
 
   return (
     <SafeAreaView style={{flex: 1}}>
@@ -55,14 +17,14 @@ const Login = ({navigation,setIsAuthed}) => {
         <Text style={styles.text}>Log In:</Text>
         <View style={styles.child}>
           <Text style={{fontSize:20}}>Username:</Text>
-          <TextInput style={styles.TextInput} value={Username} onChangeText={(value) => setUsername(value)} />
+          <TextInput style={styles.TextInput} value={email} onChangeText={(value) => setEmail(value)} />
         </View>
         <View style={styles.child}>
           <Text style={{fontSize:20}}>Password:</Text>
-          <TextInput keyboardType='numeric' style={styles.TextInput} value={Password} onChangeText={(value) => setPassword(value)} />
+          <TextInput style={styles.TextInput} value={password} onChangeText={(value) => setPassword(value)} />
         </View>
         <View style={styles.child}>
-          <TouchableOpacity style={styles.btn} activeOpacity={0.8} onPress={() => { checkLogin() }}>
+          <TouchableOpacity style={styles.btn} activeOpacity={0.8} onPress={handleLoggin}>
             <Text style={{ textAlign: 'center',color:'white' }}>Login</Text>
           </TouchableOpacity>
         </View>
