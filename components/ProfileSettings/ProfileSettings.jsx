@@ -1,3 +1,4 @@
+import { scheduleNotificationAsync } from 'expo-notifications';
 import React ,{useState} from 'react'
 import { StyleSheet, Text, TextInput,View,SafeAreaView,ImageBackground, ScrollView ,TouchableOpacity,Image,Button} from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome'
@@ -11,7 +12,7 @@ const ProfileSettings = ({props}) => {
 
   const [passwordTextField,setpasswordTextField]=useState(true)
 
-    const {email,setEmail,user,setIsAuthed} = props;
+    const {email,setEmail,user,setIsAuthed,setPassword,setCPassword,schedulePushNotification} = props;
 
 
   return (
@@ -32,7 +33,7 @@ const ProfileSettings = ({props}) => {
         <Text style={{color:'white',fontSize:20}}>Password:</Text> 
         
 
-        <Button onPress={() => setIsAuthed(false)} title={'Log Out'}/>
+        <Button onPress={async () => {await schedulePushNotification('logout');setIsAuthed(false);setEmail('');setPassword('');setCPassword('')}} title={'Log Out'}/>
       </View>
 
    </SafeAreaView>

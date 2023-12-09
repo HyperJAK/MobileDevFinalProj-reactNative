@@ -4,7 +4,7 @@ import {EncryptPassword, SignUpFunc, ValidEmail, ValidPassword} from "../Utiliti
 
 const Signup = ({props}) => {
 
-    const {setUser,setIsAuthed,email,setEmail,password,setPassword,cPassword,setCPassword} = props;
+    const {setUser,setIsAuthed,email,setEmail,password,setPassword,cPassword,setCPassword,schedulePushNotification} = props;
 
 
     const [userData, setUserData] = useState([{username:'Antoine',Password:'12345'},
@@ -28,6 +28,7 @@ const Signup = ({props}) => {
 
             const userInfo = {username, email, encryptedPass, profilePic};
             console.log("Signing up")
+            await schedulePushNotification('register')
 
             try{
                 await SignUpFunc(userInfo, setUser);
@@ -55,22 +56,22 @@ const Signup = ({props}) => {
                 }}
                 style={styles.container}
             >
-                <Text style={styles.text}>Log In:</Text>
+                <Text style={styles.text}>Sign Up:</Text>
                 <View style={styles.child}>
-                    <Text style={{fontSize:20}}>Username:</Text>
-                    <TextInput style={styles.TextInput} value={email} onChangeText={(value) => setEmail(value)} />
+                    <Text style={{fontSize:20}}>Email:</Text>
+                    <TextInput style={styles.TextInput} value={email} textContentType='emailAddress' onChangeText={(value) => setEmail(value)} />
                 </View>
                 <View style={styles.child}>
                     <Text style={{fontSize:20}}>Password:</Text>
-                    <TextInput style={styles.TextInput} value={password} onChangeText={(value) => setPassword(value)} />
+                    <TextInput style={styles.TextInput} value={password} secureTextEntry={true} onChangeText={(value) => setPassword(value)} />
                 </View>
                 <View style={styles.child}>
                     <Text style={{fontSize:20}}>Confirm Password:</Text>
-                    <TextInput style={styles.TextInput} value={cPassword} onChangeText={(value) => setCPassword(value)} />
+                    <TextInput style={styles.TextInput} value={cPassword} secureTextEntry={true} onChangeText={(value) => setCPassword(value)} />
                 </View>
-                <View style={styles.child}>
+                <View>
                     <TouchableOpacity style={styles.btn} activeOpacity={0.8} onPress={handleSignup}>
-                        <Text style={{ textAlign: 'center',color:'white' }}>Login</Text>
+                        <Text style={{ textAlign: 'center',color:'white' }}>Sign Up</Text>
                     </TouchableOpacity>
                 </View>
             </ImageBackground>
@@ -97,6 +98,8 @@ const styles = StyleSheet.create({
     child: {
         flexDirection: 'row',
         alignItems: 'center',
+        justifyContent: 'space-between',
+        width: '90%'
     },
     TextInput: {
         borderWidth: 3,

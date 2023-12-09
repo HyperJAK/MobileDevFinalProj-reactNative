@@ -1,5 +1,6 @@
 import React, { useState ,useEffect} from 'react';
 import { View, Text, TextInput, TouchableOpacity, ImageBackground, StyleSheet, SafeAreaView, Alert } from 'react-native';
+import { Keyboard } from 'react-native';
 
 const Login = ({props}) => {
 
@@ -16,15 +17,15 @@ const Login = ({props}) => {
       >
         <Text style={styles.text}>Log In:</Text>
         <View style={styles.child}>
-          <Text style={{fontSize:20}}>Username:</Text>
+          <Text style={{fontSize:20}}>Email:</Text>
           <TextInput style={styles.TextInput} value={email} onChangeText={(value) => setEmail(value)} />
         </View>
         <View style={styles.child}>
           <Text style={{fontSize:20}}>Password:</Text>
-          <TextInput style={styles.TextInput} value={password} onChangeText={(value) => setPassword(value)} />
+          <TextInput style={styles.TextInput} value={password} secureTextEntry={true} onChangeText={(value) => setPassword(value)} />
         </View>
-        <View style={styles.child}>
-          <TouchableOpacity style={styles.btn} activeOpacity={0.8} onPress={handleLoggin}>
+        <View>
+          <TouchableOpacity style={styles.btn} activeOpacity={0.8} onPress={()=>{Keyboard.dismiss();handleLoggin()}}>
             <Text style={{ textAlign: 'center',color:'white' }}>Login</Text>
           </TouchableOpacity>
         </View>
@@ -52,6 +53,8 @@ const styles = StyleSheet.create({
   child: {
     flexDirection: 'row',
     alignItems: 'center',
+    justifyContent: 'space-between',
+    width: '90%'
   },
   TextInput: {
     borderWidth: 3,

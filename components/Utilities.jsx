@@ -1,5 +1,7 @@
 import {AES, enc} from "react-native-crypto-js";
 import axios from "axios";
+import { Notifications } from 'expo';
+import * as Permissions from 'expo-permissions';
 
 
 export function ValidAlphaInput(input){
@@ -74,12 +76,29 @@ export function ValidEmail(email){
     return emailRegex.test(email);
 }
 
+const getNotificationPermission = async () => {
+    const { status } = await Permissions.askAsync(Permissions.NOTIFICATIONS);
+    if (status !== 'granted') {
+      console.error('Notification permissions not granted');
+    }
+  };
+
+  const sendNotification = async () => {
+    await Notifications.scheduleNotificationAsync({
+      content: {
+        title: 'Welcome back!',
+        body: 'You have successfully logged in.',
+      },
+      trigger: null, // send immediately
+    });
+  };
 
 export async function SignInFunc(userInfo, setUser){
-
+    sendNotification();
+    console.log(userInfo)
     try {
         const response = await axios.post(
-            "http://192.168.2.102:4000/login",
+            "http://192.168.132.1:4000/login",
             userInfo
         );
 
@@ -99,7 +118,6 @@ export async function SignInFunc(userInfo, setUser){
             const profilePicBase64 = profilePicBuffer
                 ? `data:image/jpeg;base64,${profilePicBuffer.toString('base64')}`
                 : null;
-
 
             console.log("RESPONSESSSS")
             console.log(response.data.data)
@@ -129,7 +147,7 @@ export async function SignUpFunc(userInfo, setUser) {
 
     try {
         const response = await axios.post(
-            "http://192.168.2.102:4000/signup",
+            "http://192.168.132.1:4000/signup",
             userInfo
         );
         //console.log("RESPONSESSSS")
