@@ -209,7 +209,7 @@ export default function App(){
                       <CustomIconComponent color={color} size={size} name={'person'} />
                   ),
               }}>
-                  {() => <ProfileSettings props={{email,setEmail,user,setIsAuthed,setPassword,setCPassword,schedulePushNotification}} />}
+                  {() => <ProfileSettings props={{email,setEmail,password,setPassword,user,setUser,setIsAuthed,setPassword,setCPassword,schedulePushNotification}} />}
               </Tab.Screen>}
           </Tab.Navigator>
 
