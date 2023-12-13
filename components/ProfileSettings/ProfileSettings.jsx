@@ -58,6 +58,7 @@ const ProfileSettings = ({props}) => {
         console.log('Entered !!!')
         console.log(newPassword)
         console.log(newEmail)
+        console.log(newUsername)
 
         const data = {user, newEmail, encryptedPass, newUsername};
 
@@ -88,6 +89,13 @@ const ProfileSettings = ({props}) => {
         <ImageGalleryPicker showImage={false} imageSave={setImageSave}/>
     </View>
     <View style={{marginTop:40,rowGap:30}}>
+
+        <View style={{flexDirection:'row',alignItems:'center'}}>
+            <Text style={{color:'white',fontSize:20,flex:2}}>Username:</Text>
+            <TextInput placeholder="Enter Username" style={{color:'white',flex:3,borderWidth:1,borderColor:'white',borderRadius:50,textAlign:'center'}} value={newUsername} editable={passwordTextField} onChange={(e)=>{setNewUsername(e.nativeEvent.text)}}/>
+        </View>
+
+
       <View style={{flexDirection:'row',alignItems:'center'}}>
         <Text style={{color:'white',fontSize:20,flex:2}}>Email:</Text>
         <TextInput placeholder="Enter Email" style={{color:'white',flex:3,borderWidth:1,borderColor:'white',borderRadius:50,textAlign:'center'}} value={email} editable={passwordTextField} onChange={(e)=>{setEmail(e.nativeEvent.text);setNewEmail(e.nativeEvent.text);}}/>      
