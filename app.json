@@ -1,7 +1,7 @@
 {
   "expo": {
     "name": "project",
-    "slug": "project",
+    "slug": "mobile-dev-proj",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
@@ -30,8 +30,9 @@
     },
     "extra": {
       "eas": {
-        "projectId": "cc54240d-3dd1-4ecc-8606-47263a65d7ff"
+        "projectId": "725ac676-38b9-4c72-b597-953dd470caa0"
       }
-    }
+    },
+    "owner": "hyperjak"
   }
 }

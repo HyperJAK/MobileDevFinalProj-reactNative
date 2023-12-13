@@ -6,6 +6,8 @@ import Material from 'react-native-vector-icons/MaterialCommunityIcons'
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 import {DecryptPassword, EncryptPassword, ValidEmail, ValidPassword} from "../Utilities";
 import axios from 'axios';
+import {ImageGalleryPicker} from "./ImageGalleryPicker";
+import Camera from "./Camera";
 
 
 const ProfileSettings = ({props}) => {
@@ -19,12 +21,15 @@ const ProfileSettings = ({props}) => {
 
   let [validPass, setValidPass] = useState(false);
   let [validEmail, setValidEmail] = useState(false);
+    let [validUsername, setValidUsername] = useState(false);
 
   let [newEmail, setNewEmail] = useState(email);
   let [newPassword, setNewPassword] = useState(password);
+  let [newUsername, setNewUsername] = useState('Default User');
 
   // State variable to track password visibility 
-  const [showPassword, setShowPassword] = useState(false); 
+  const [showPassword, setShowPassword] = useState(false);
+  const [imageSave, setImageSave] = useState(null);
   
   // Function to toggle the password visibility state 
   const toggleShowPassword = () => { 
@@ -42,8 +47,11 @@ const ProfileSettings = ({props}) => {
     if(newPassword.length !== 0){
         validPass = true;
     }
+    if(newUsername.length !== 0){
+        validUsername = true;
+    }
 
-    if (validPass && validEmail) {
+    if (validPass && validEmail && validUsername) {
 
         const encryptedPass = await EncryptPassword(newPassword);
         setNewPassword(encryptedPass);
@@ -51,10 +59,10 @@ const ProfileSettings = ({props}) => {
         console.log(newPassword)
         console.log(newEmail)
 
-        const data = {user, newEmail, encryptedPass};
+        const data = {user, newEmail, encryptedPass, newUsername};
 
         try {
-            await axios.post('http://192.168.1.18:4000/updateUserInfo', data);
+            await axios.post('http://192.168.2.102:4000/updateUserInfo', data);
 
             setUser((prevUser) => ({
                 ...prevUser,
@@ -74,8 +82,10 @@ const ProfileSettings = ({props}) => {
   return (
    <SafeAreaView style={{backgroundColor:'#080c14',flex:1, padding: 20, flexDirection: 'column'}}>
     <View style={{marginTop:50,flexDirection:'column',alignItems:'center', borderBottomWidth: 1, borderBottomColor: 'white',paddingBottom:20, gap: 20}}>
-      <Image source={user.image?user.image : require('../../assets/nopfp.png')} style={{width:120,height:120,borderRadius:70}}/>
+      <Image source={imageSave? {uri: imageSave} : require('../../assets/nopfp.png')} style={{width:120,height:120,borderRadius:70}}/>
+
       <Text style={{color:'white'}}>{user.username?user.username : user.email}</Text>
+        <ImageGalleryPicker showImage={false} imageSave={setImageSave}/>
     </View>
     <View style={{marginTop:40,rowGap:30}}>
       <View style={{flexDirection:'row',alignItems:'center'}}>
@@ -108,6 +118,14 @@ const ProfileSettings = ({props}) => {
         <Button title={title} onPress={() => {title=='Edit'?(setUsenameText(true), setpasswordTextField(true), setTitle('Save')):(setUsenameText(false), setpasswordTextField(false), setTitle('Edit'), setShowPassword(false), HandleProfileSave())}}/> 
         <Button onPress={async () => {await schedulePushNotification('logout');setIsAuthed(false);setEmail('');setPassword('');setCPassword('')}} title={'Log Out'}/>
       </View>
+        <View style={{display: 'flex', flexDirection: 'column'}}>
+            <Text style={{color:'white',fontSize:20}}>Photograph a document for verification:</Text>
+            <View style={{display: 'flex', flexDirection: 'row', justifyContent: 'space-between'}}>
+                <ImageGalleryPicker showImage={true} imageSave={setImageSave}/>
+                <Camera />
+            </View>
+
+        </View>
     </View>
    </SafeAreaView>
   )
