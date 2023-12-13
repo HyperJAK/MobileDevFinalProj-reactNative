@@ -1,6 +1,9 @@
 import React, { useState ,useEffect} from 'react';
-import { View, Text, TextInput, TouchableOpacity, ImageBackground, StyleSheet, SafeAreaView, Alert } from 'react-native';
+import { View, Text, TouchableOpacity, ImageBackground, StyleSheet, SafeAreaView, Alert } from 'react-native';
 import {EncryptPassword, SignUpFunc, ValidEmail, ValidPassword} from "../Utilities";
+import { TextInput, Button } from 'react-native-paper';
+import authPic from '../../assets/Auth.jpg'
+import {NormalBlue} from "../../assets/colors/Colors";
 
 const Signup = ({props}) => {
 
@@ -50,10 +53,7 @@ const Signup = ({props}) => {
     return (
         <SafeAreaView style={{flex: 1}}>
             <ImageBackground
-                source={{
-                    uri:
-                        'https://media.istockphoto.com/id/1174854848/vector/aircraft-destinations-with-planes-icons-on-blue-background-abstract-seamless-pattern.jpg?s=612x612&w=0&k=20&c=hcj3Eu8HC2JWbliY5CZChDNpGrLNjvZylU-6JidI3IM=',
-                }}
+                source={authPic}
                 style={styles.container}
             >
                 <Text style={styles.text}>Sign Up:</Text>
@@ -102,18 +102,22 @@ const styles = StyleSheet.create({
         width: '90%'
     },
     TextInput: {
-        borderWidth: 3,
-        borderRadius: 100,
-        padding: 4,
+        borderWidth: 1,
+        borderRadius: 20,
+        padding: 1,
         textAlignVertical: 'center',
         width:200,
-        textAlign:'center',
+        textAlign:'left',
 
     },
     btn: {
-        backgroundColor: 'black',
+        backgroundColor: NormalBlue,
         borderRadius: 40,
-        padding: 10,
-        width: 100,
+        marginTop: 20,
+        padding: 20,
+        width: 200,
+        height: 60,
+        textAlign:'center',
+        textAlignVertical: 'center',
     },
 });
