@@ -1,7 +1,6 @@
 import React ,{useState} from 'react'
 import {
     StyleSheet,
-    TextInput,
     Text,
     View,
     SafeAreaView,
@@ -16,6 +15,7 @@ import {DarkGrey, LighterBlue} from "../../assets/colors/Colors";
 import Icon from "react-native-vector-icons/MaterialIcons";
 import DateTimePicker from '@react-native-community/datetimepicker';
 import {DatePicker} from "./DatePicker";
+import { TextInput } from 'react-native-paper';
 
 
 const styles = StyleSheet.create({
@@ -26,7 +26,7 @@ const styles = StyleSheet.create({
         padding:10,
         borderRadius:10,
         backgroundColor:'white',
-        textAlign:'center',
+        textAlign:'left',
         fontSize:20 ,
         color:'black',
 

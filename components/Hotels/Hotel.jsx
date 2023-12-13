@@ -1,5 +1,5 @@
 import React ,{useState} from 'react'
-import { StyleSheet, TextInput,Text, View,SafeAreaView,ImageBackground, ScrollView, TouchableOpacity, Image } from 'react-native';
+import { StyleSheet,Text, View,SafeAreaView,ImageBackground, ScrollView, TouchableOpacity, Image } from 'react-native';
 import Material from 'react-native-vector-icons/MaterialCommunityIcons'
 import Awesome from 'react-native-vector-icons/FontAwesome'
 import {DatePicker} from "../Flights/DatePicker";
@@ -9,6 +9,7 @@ import { FlatList } from 'react-native';
 import imageHotel from '../../assets/hotelImg.jpg'
 import { Keyboard } from 'react-native';
 import { Pressable } from 'react-native';
+import { TextInput } from 'react-native-paper';
 
 
 const Hotel=({navigation})=>{
@@ -40,7 +41,7 @@ const Hotel=({navigation})=>{
             <Awesome name='arrow-left' size={40} style={{color:'white',marginTop:40,marginLeft:20}} onPress={()=>{navigation.navigate("Home")}}/>
             <Text style={{color:'white',textAlign:'center',fontSize:20,marginTop:10}}>Choose the infos for your Hotel:</Text>
             <TextInput style={styles.path}  placeholder="Stay In..." placeholderTextColor="black" onChange={(e)=>{setDestination(e.nativeEvent.text); console.log(destination)}}/>
-            <TextInput style={styles.path} placeholder="Leave In..." placeholderTextColor="black" />
+{/*            <TextInput style={styles.path} placeholder="Leave In..." placeholderTextColor="black" />*/}
             <View style={styles.date}>
                 <DatePicker title={'Book for'}/>
                 <DatePicker title={'Until'}/>
@@ -98,7 +99,7 @@ path:{
     padding:10,
     borderRadius:10,
     backgroundColor:'white',
-    textAlign:'center',
+    textAlign:'left',
     fontSize:20 ,
     color:'black',
     
