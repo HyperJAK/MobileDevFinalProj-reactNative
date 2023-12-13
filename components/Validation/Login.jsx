@@ -18,11 +18,11 @@ const Login = ({props}) => {
         <Text style={styles.text}>Log In:</Text>
         <View style={styles.child}>
           <Text style={{fontSize:20}}>Email:</Text>
-          <TextInput style={styles.TextInput} value={email} onChangeText={(value) => setEmail(value)} />
+          <TextInput style={styles.TextInput} placeholder={"Email"} value={email} onChangeText={(value) => setEmail(value)} />
         </View>
         <View style={styles.child}>
           <Text style={{fontSize:20}}>Password:</Text>
-          <TextInput style={styles.TextInput} value={password} secureTextEntry={true} onChangeText={(value) => setPassword(value)} />
+          <TextInput style={styles.TextInput} placeholder={"Password"} value={password} secureTextEntry={true} onChangeText={(value) => setPassword(value)} />
         </View>
         <View>
           <TouchableOpacity style={styles.btn} activeOpacity={0.8} onPress={()=>{Keyboard.dismiss();handleLoggin()}}>
@@ -46,22 +46,22 @@ const styles = StyleSheet.create({
     rowGap:20
   },
   text: {
-    fontSize: 30,
+    fontSize: 40,
     fontWeight: '700',
 
   },
   child: {
-    flexDirection: 'row',
+    flexDirection: 'column',
     alignItems: 'center',
     justifyContent: 'space-between',
     width: '80%'
   },
   TextInput: {
     borderWidth: 1,
-    borderRadius: 20,
+    borderRadius: 10,
     padding: 1,
     textAlignVertical: 'center',
-    width:200,
+    width:230,
     textAlign:'left',
     
   },

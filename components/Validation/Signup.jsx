@@ -59,15 +59,15 @@ const Signup = ({props}) => {
                 <Text style={styles.text}>Sign Up:</Text>
                 <View style={styles.child}>
                     <Text style={{fontSize:20}}>Email:</Text>
-                    <TextInput style={styles.TextInput} value={email} textContentType='emailAddress' onChangeText={(value) => setEmail(value)} />
+                    <TextInput style={styles.TextInput} placeholder={"Email"} value={email} textContentType='emailAddress' onChangeText={(value) => setEmail(value)} />
                 </View>
                 <View style={styles.child}>
                     <Text style={{fontSize:20}}>Password:</Text>
-                    <TextInput style={styles.TextInput} value={password} secureTextEntry={true} onChangeText={(value) => setPassword(value)} />
+                    <TextInput style={styles.TextInput} placeholder={"Password"} value={password} secureTextEntry={true} onChangeText={(value) => setPassword(value)} />
                 </View>
                 <View style={styles.child}>
                     <Text style={{fontSize:20}}>Confirm Password:</Text>
-                    <TextInput style={styles.TextInput} value={cPassword} secureTextEntry={true} onChangeText={(value) => setCPassword(value)} />
+                    <TextInput style={styles.TextInput} placeholder={"Confirm password"} value={cPassword} secureTextEntry={true} onChangeText={(value) => setCPassword(value)} />
                 </View>
                 <View>
                     <TouchableOpacity style={styles.btn} activeOpacity={0.8} onPress={handleSignup}>
@@ -91,19 +91,19 @@ const styles = StyleSheet.create({
         rowGap:20
     },
     text: {
-        fontSize: 30,
-        fontWeight: '700',
+        fontSize: 40,
+        fontWeight: '700'
 
     },
     child: {
-        flexDirection: 'row',
+        flexDirection: 'column',
         alignItems: 'center',
         justifyContent: 'space-between',
         width: '90%'
     },
     TextInput: {
         borderWidth: 1,
-        borderRadius: 20,
+        borderRadius: 10,
         padding: 1,
         textAlignVertical: 'center',
         width:200,
