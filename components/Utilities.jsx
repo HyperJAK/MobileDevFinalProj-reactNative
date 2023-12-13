@@ -98,7 +98,7 @@ export async function SignInFunc(userInfo, setUser){
     console.log(userInfo)
     try {
         const response = await axios.post(
-            "http://192.168.132.1:4000/login",
+            "http://192.168.2.102:4000/login",
             userInfo
         );
 
@@ -147,7 +147,7 @@ export async function SignUpFunc(userInfo, setUser) {
 
     try {
         const response = await axios.post(
-            "http://192.168.132.1:4000/signup",
+            "http://192.168.2.102:4000/signup",
             userInfo
         );
         //console.log("RESPONSESSSS")
