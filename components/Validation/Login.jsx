@@ -1,7 +1,7 @@
 import React, { useState ,useEffect} from 'react';
 import { View, Text, TouchableOpacity, ImageBackground, StyleSheet, SafeAreaView, Alert } from 'react-native';
 import { Keyboard } from 'react-native';
-import { TextInput, Button } from 'react-native-paper';
+import { TextInput } from 'react-native-paper';
 import authPic from '../../assets/Auth.jpg'
 import {NormalBlue} from "../../assets/colors/Colors";
 

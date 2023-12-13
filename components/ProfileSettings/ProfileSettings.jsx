@@ -1,6 +1,6 @@
 import { scheduleNotificationAsync } from 'expo-notifications';
 import React ,{useState} from 'react'
-import { StyleSheet, Text, TextInput,View,SafeAreaView,ImageBackground, ScrollView ,TouchableOpacity,Image,Button} from 'react-native';
+import { StyleSheet, Text,View,SafeAreaView,ImageBackground, ScrollView ,TouchableOpacity,Image,Button} from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome'
 import Material from 'react-native-vector-icons/MaterialCommunityIcons'
 import { MaterialCommunityIcons } from '@expo/vector-icons';
@@ -8,6 +8,7 @@ import {DecryptPassword, EncryptPassword, ValidEmail, ValidPassword} from "../Ut
 import axios from 'axios';
 import {ImageGalleryPicker} from "./ImageGalleryPicker";
 import Camera from "./Camera";
+import { TextInput } from 'react-native-paper';
 
 
 const ProfileSettings = ({props}) => {
@@ -82,7 +83,7 @@ const ProfileSettings = ({props}) => {
 
   return (
    <SafeAreaView style={{backgroundColor:'#080c14',flex:1, padding: 20, flexDirection: 'column'}}>
-    <View style={{marginTop:50,flexDirection:'column',alignItems:'center', borderBottomWidth: 1, borderBottomColor: 'white',paddingBottom:20, gap: 20}}>
+    <View style={{marginTop:10,flexDirection:'column',alignItems:'center', borderBottomWidth: 1, borderBottomColor: 'white',paddingBottom:20, gap: 20}}>
       <Image source={imageSave? {uri: imageSave} : require('../../assets/nopfp.png')} style={{width:120,height:120,borderRadius:70}}/>
 
       <Text style={{color:'white'}}>{user.username?user.username : user.email}</Text>
@@ -92,16 +93,16 @@ const ProfileSettings = ({props}) => {
 
         <View style={{flexDirection:'row',alignItems:'center'}}>
             <Text style={{color:'white',fontSize:20,flex:2}}>Username:</Text>
-            <TextInput placeholder="Enter Username" style={{color:'white',flex:3,borderWidth:1,borderColor:'white',borderRadius:50,textAlign:'center'}} value={newUsername} editable={passwordTextField} onChange={(e)=>{setNewUsername(e.nativeEvent.text)}}/>
+            <TextInput placeholder="Enter Username" style={{color:'white',flex:4,borderWidth:1,borderRadius:10,textAlign:'left'}} value={newUsername} editable={passwordTextField} onChange={(e)=>{setNewUsername(e.nativeEvent.text)}}/>
         </View>
 
 
       <View style={{flexDirection:'row',alignItems:'center'}}>
         <Text style={{color:'white',fontSize:20,flex:2}}>Email:</Text>
-        <TextInput placeholder="Enter Email" style={{color:'white',flex:3,borderWidth:1,borderColor:'white',borderRadius:50,textAlign:'center'}} value={email} editable={passwordTextField} onChange={(e)=>{setEmail(e.nativeEvent.text);setNewEmail(e.nativeEvent.text);}}/>      
+        <TextInput placeholder="Enter Email" style={{color:'white',flex:4,borderWidth:1,borderRadius:10,textAlign:'left'}} value={email} editable={passwordTextField} onChange={(e)=>{setEmail(e.nativeEvent.text);setNewEmail(e.nativeEvent.text);}}/>
       </View>
       <View style={{flexDirection:'row',alignItems:'center'}}>
-        <Text style={{color:'white',fontSize:20,flex:2}}>Password:</Text> 
+        <Text style={{color:'white',fontSize:20,flex:2}}>Password:</Text>
         <TextInput 
   
           // Set secureTextEntry prop to hide  
@@ -109,9 +110,9 @@ const ProfileSettings = ({props}) => {
           secureTextEntry={!showPassword} 
           value={password} 
           onChange={(e)=>{setPassword(e.nativeEvent.text);setNewPassword(e.nativeEvent.text)}}
-          style={{color:'white',flex:3,borderWidth:1,borderColor:'white',borderRadius:50,textAlign:'center'}}
+          style={{color:'black',flex:4,borderWidth:1,borderRadius:10,textAlign:'left'}}
           placeholder="Enter Password"
-          placeholderTextColor="white"
+          placeholderTextColor="black"
           editable={passwordTextField}
         /> 
         <MaterialCommunityIcons 
@@ -123,7 +124,7 @@ const ProfileSettings = ({props}) => {
         />
       </View>
       <View style={{ gap: 20 }}>
-        <Button title={title} onPress={() => {title=='Edit'?(setUsenameText(true), setpasswordTextField(true), setTitle('Save')):(setUsenameText(false), setpasswordTextField(false), setTitle('Edit'), setShowPassword(false), HandleProfileSave())}}/> 
+        <Button title={title} onPress={() => {title=='Edit'?(setUsenameText(true), setpasswordTextField(true), setTitle('Save')):(setUsenameText(false), setpasswordTextField(false), setTitle('Edit'), setShowPassword(false), HandleProfileSave())}}/>
         <Button onPress={async () => {await schedulePushNotification('logout');setIsAuthed(false);setEmail('');setPassword('');setCPassword('')}} title={'Log Out'}/>
       </View>
         <View style={{display: 'flex', flexDirection: 'column'}}>
